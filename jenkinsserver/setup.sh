@@ -18,3 +18,5 @@ sudo echo "sonar.embeddedDatabase.port:               9092" >> /usr/local/sonar/
 sudo /etc/init.d/sonar start
 sudo rm -f /etc/maven/settings.xml
 sudo wget https://raw.githubusercontent.com/roybhaskar9/samplejava/master/settings.xml -O /etc/maven/settings.xml
+wget https://raw.githubusercontent.com/studynine/jenkins/master/jenkinsserver/selenium.sh
+sudo bash selenium.sh
