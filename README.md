@@ -30,50 +30,50 @@ samplejava folder contains a sample java project to do the CICD on it by using J
 
 Instructions:
 
-put up the samplejava folder as a java code repository on github
+- put up the samplejava folder as a java code repository on github
 
-create a code pull job to periodically poll samplejava repo
+- create a code pull job to periodically poll samplejava repo
 
-create a build job with build step maven top level target goal 'package' to show how build is done
+- create a build job with build step maven top level target goal 'package' to show how build is done
 
-create a build job with build step maven top level target goal 'sonar:sonar' to show how sonarqube can be used for code quality analysis
+- create a build job with build step maven top level target goal 'sonar:sonar' to show how sonarqube can be used for code quality analysis
 
-create a job with build step maven top level target goal 'install' to show maven repo for package version control in /var/lib/jenkins/.m2
+- create a job with build step maven top level target goal 'install' to show maven repo for package version control in /var/lib/jenkins/.m2
 
-create a job with build step maven top level target goal 'deploy' to show how nexus can be used for storing the package in version control with timestamp
+- create a job with build step maven top level target goal 'deploy' to show how nexus can be used for storing the package in version control with timestamp
 
-At this time the pipeline should look like gitpull -> build -> sonarCQA -> localmavenstorage -> nexuspackagestorage 
+- At this time the pipeline should look like gitpull -> build -> sonarCQA -> localmavenstorage -> nexuspackagestorage 
 
-install build pipeline plugin and create a pipeline for showing all above jobs in sequence as a CI pipeline
+- install build pipeline plugin and create a pipeline for showing all above jobs in sequence as a CI pipeline
 
-install "deploy to container" plugin
+- install "deploy to container" plugin
 
-create another vm of ubuntu 16.04 and install tomcat using scripts in https://github.com/studynine/jenkins/tree/master/tomcat
+- create another vm of ubuntu 16.04 and install tomcat using scripts in https://github.com/studynine/jenkins/tree/master/tomcat
 
-create job for showing how build step shell script can be used for downloading packages from nexus url through wget and then post build step deploy to container can be used for deploying the downloaded war file into a tomcat server
+- create job for showing how build step shell script can be used for downloading packages from nexus url through wget and then post build step deploy to container can be used for deploying the downloaded war file into a tomcat server
 
-create 3 jobs for tomcat deployment in 3 tomcat context paths /dev /test /prod on the same tomcat server
+- create 3 jobs for tomcat deployment in 3 tomcat context paths /dev /test /prod on the same tomcat server
 
-put these 3 jobs in sequence after nexus job in CI pipeline so that the new pipeline becomes:
+- put these 3 jobs in sequence after nexus job in CI pipeline so that the new pipeline becomes:
 
-gitpull -> build -> sonarCQA -> localmavenstorage -> nexuspackagestorage -> deploy2dev -> deploy2test -> deploy2prod
+- gitpull -> build -> sonarCQA -> localmavenstorage -> nexuspackagestorage -> deploy2dev -> deploy2test -> deploy2prod
 
-Now install python plugin in jenkins
+- Now install python plugin in jenkins
 
-create a job in jenkins with build step as 'execute python script'
+- create a job in jenkins with build step as 'execute python script'
 
-put content of seleniumtest.py in the build step python section
+- put content of seleniumtest.py in the build step python section
 
-change url to appropriate url for test context path of tomcat
+- change url to appropriate url for test context path of tomcat
 
-run job to see that the code fails and job also fails
+- run job to see that the code fails and job also fails
 
-change the python code if condition from Hello Java2 to Hello Java
+- change the python code if condition from Hello Java2 to Hello Java
 
-run job to see that the code succeeds and job succeeds
+- run job to see that the code succeeds and job succeeds
 
-put the job in pipeline between deploy2test and deploy2prod
+- put the job in pipeline between deploy2test and deploy2prod
 
-if selenium job fails then deployment does not happen to production
+- if selenium job fails then deployment does not happen to production
 
-if selenium job succeeds then deployment happens to production
+- if selenium job succeeds then deployment happens to production
